@@ -1,5 +1,6 @@
 import time
 
+
 def countdown(n):
     if n == 0:
         print(n)
@@ -9,12 +10,14 @@ def countdown(n):
         time.sleep(1)
         return countdown(n -1)
 
+
 def iter_countdown(n):
     while n > 0:
         print(n)
         time.sleep(1)
         n -= 1
     print(n)
+
 
 b = 5
 # iter_countdown(5)
@@ -39,15 +42,24 @@ def least_missing(alist):
             continue
     return n
 
-"""Recusive with Lambda: E.g Factorial
+
+"""Recursive with Lambda: E.g Factorial
 f = lambda x: 1 if x in (1,2) else f(x-1)+f(x-2)
 """
 
+
 def recur_least_missing(alist):
-    if min(alist) <1:
+    if min(alist) <= 0:
         return 1
+    if len(alist) <2:
+        return alist[0] + 1
     else:
-        r = lambda n: n + 1 if n in alist else r(n + 1)
+        n = min(alist)
+        while n in alist:
+            n += 1
+            continue
+    return n
+
 '''
 For example, given A = [1, 3, 6, 4, 1, 2], the function should return 5.
 
